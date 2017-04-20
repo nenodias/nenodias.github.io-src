@@ -1,54 +1,55 @@
 {% extends "base.html" %}
 
-{% block stylesheets %}
-    {{ super() }}
-    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/blog.css">
-    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/github.css">
-{% endblock stylesheets %}
-
 {% block content %}
-    {% include "sidebar.html" %}
 
-    <div id="post-container">
-        <ol id="post-list">
-            {% for article in articles_page.object_list %}
-            <li>
-                <article class="post-entry">
-                    <header class="entry-header">
-                        <time class="post-time" datetime="{{ article.date.isoformat() }}" pubdate>
-                            {{ article.locale_date }}
-                        </time>
-                        <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"><h1>{{ article.title }}</h1></a>
-                    </header>
-                    <section class="post-content">
-                        {{ article.summary }}
-                    </section>
-                </article>
-            </li>
-            <hr/>
-            {% endfor %}
-        </ol>
-        {% if DEFAULT_PAGINATION %}
-        <div class="paginator">
-            {% if articles_page.has_previous() %}
-                {% if articles_page.previous_page_number() == 1 %}
-                    <a href="{{ SITEURL }}/{{ page_name }}.html">
-                        <i class="icon-circle-arrow-left"></i>
-                    </a>
-                {% else %}
-                    <a href="{{ SITEURL }}/{{ page_name }}{{ articles_page.previous_page_number() }}.html">
-                        <i class="icon-circle-arrow-left"></i>
-                    </a>
-                {% endif %}
-            {% endif %}
-            Page {{ articles_page.number }} / {{ articles_paginator.num_pages }}
-            {% if articles_page.has_next() %}
-                <a href="{{ SITEURL }}/{{ page_name }}{{ articles_page.next_page_number() }}.html">
-                    <i class="icon-circle-arrow-right"></i>
-                </a>
-            {% endif %}
-        </div>
+{% for article in articles_page.object_list %}
+<div class="box content blog-post">
+    <p class="has-text-right has-text-muted">
+        <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"><h1>{{ article.title }}</h1></a>
+        <time class="post-time" datetime="{{ article.date.isoformat() }}" pubdate>
+            {{ article.locale_date }}
+        </time>
+    </p>
+    <section class="post-content">
+        {{ article.content }}
+    </section>
+</div>
+{% endfor %}
+
+{% if DEFAULT_PAGINATION %}
+<nav class="pagination">
+    {% if articles_page.has_previous() %}
+        {% if articles_page.previous_page_number() == 1 %}
+            <a class="pagination-previous" href="{{ SITEURL }}/{{ page_name }}.html">
+                <i class="fa fa-arrow-left"></i>
+            </a>
+        {% else %}
+            <a class="pagination-previous" href="{{ SITEURL }}/{{ page_name }}{{ articles_page.previous_page_number() }}.html">
+                <i class="fa fa-arrow-left"></i>
+            </a>
         {% endif %}
+    {% else %}
+    <a class="pagination-previous is-disabled" href="#">
+        <i class="fa fa-arrow-left"></i>
+    </a>
+    {% endif %}
+    {% if articles_page.has_next() %}
+        <a class="pagination-next" href="{{ SITEURL }}/{{ page_name }}{{ articles_page.next_page_number() }}.html">
+            <i class="fa fa-arrow-right"></i>
+        </a>
+    {% else %}
+        <a class="pagination-next is-disabled" href="#">
+            <i class="fa fa-arrow-righ"></i>
+        </a>
+    {% endif %}
+    <ul class="pagination-list">
+        <li>
+            <a class="pagination-link is-current">
+                Página {{ articles_page.number }} / {{ articles_paginator.num_pages }}
+            </a>
+        </li>
+    </ul>
+</nav>
+{% endif %}
 
-    </div>
 {% endblock content %}

@@ -1,0 +1,8 @@
+<div class="card is-fullwidth">
+    <div class="card-content">
+        {% set testing = tags|sort %}
+        {% for tag, articles in testing[:30] %}
+                <a class="tag is-info" href="{{ SITEURL }}/{{ tag.url }}">{{ tag }} ({{ articles|count }})</a>
+        {% endfor %}
+    </div>
+</div>

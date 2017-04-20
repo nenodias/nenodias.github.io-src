@@ -39,11 +39,10 @@
             {% endif %}
         {% endif %}
         {% block stylesheets %}
-        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/normalize.css">
-        <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-        <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/bulma.css">
         <link rel="stylesheet" href="{{ SITEURL }}/theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/main.css">
+        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pygments.css">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ SITEURL }}/theme/favicon.ico">
         {% endblock stylesheets %}
         {% if FEED_ALL_ATOM %}
         <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
@@ -51,19 +50,61 @@
         {% if FEED_ALL_RSS %}
         <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
         {% endif %}
-        <script src="{{ SITEURL }}/theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
+        <section class="hero is-default is-small">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">{{SITENAME}}</h1>
+                    <h2 class="subtitle">
+                      {{SITESUBTITLE}}
+                    </h2>
+              </div>
+            </div>
+          </section>
+          <section class="section blog">
+              <div class="container">
+                  <div class="columns">
+                      <div class="column is-10 is-offset-1">
+                          {% if category %}
+                              <h1>
+                                  <span class="title"><span class="is-1">{{ category }}<span>
+                                      <i class="fa fa-tags" aria-hidden="true"></i>
+                                  </span>
+                              </h1>
+                          {% endif %}
+                          {% if tag %}
+                              <h1>
+                                  <span class="title"><span class="is-1">{{ tag }}<span>
+                                      <i class="fa fa-tags" aria-hidden="true"></i>
+                                  </span>
+                              </h1>
+                          {% endif %}
+                          <hr/>
 
-        <div id="wrapper">
-            {% block content %}
-            {% endblock content %}
-        </div>
+                          {% block content %}
+                          {% endblock content %}
 
-        {% include "ga.html" %}
-        <script src="{{ SITEURL }}/theme/js/main.js"></script>
+                          {% include "tag_list.html" %}
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <footer class="footer">
+              <div class="container">
+                  <div class="content has-text-centered">
+                      <p>
+                          <a class="icon" href="//github.com/nenodias/nenodias.github.io-src">
+                              <i class="fa fa-github"></i>
+                          </a>
+                      </p>
+                  </div>
+              </div>
+          </footer>
+
     </body>
 </html>

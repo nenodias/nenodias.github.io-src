@@ -1,9 +1,11 @@
 #!/usr/bin/env python
+"""PelicanConf."""
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
 AUTHOR = 'Horácio Dias Baptista Neto'
 SITENAME = 'Nenodias'
+SITESUBTITLE = 'Doing the best code or not so...'
 SITEURL = ''
 
 PATH = 'content'
@@ -28,7 +30,11 @@ SOCIAL = (('Github', 'http://github.com/nenodias'),
           ('Linkedin', 'https://www.linkedin.com/in/nenodias92'),)
 
 DEFAULT_PAGINATION = 10
-
+THEME = 'theme/'
+MD_EXTENSIONS = [
+    'fenced_code',
+    'codehilite(css_class=highlight, linenums=True)',
+    'extra'
+]
 # Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
-THEME= 'theme/'
+# RELATIVE_URLS = True
