@@ -6,7 +6,8 @@ from __future__ import unicode_literals
 AUTHOR = 'Horácio Dias Baptista Neto'
 SITENAME = 'Nenodias'
 SITESUBTITLE = 'Doing the best code or not so...'
-SITEURL = 'http://nenodias.github.io'
+SITEURL = ''
+SITEPROD = 'http://nenodias.github.io'
 
 PATH = 'content'
 
