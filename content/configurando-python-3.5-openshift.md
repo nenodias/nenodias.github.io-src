@@ -31,7 +31,7 @@ Após tudo isso vamos colocar a mão na massa, abra seu terminal e vamos lá.
 
 ### Criando a aplicação
 
-``` bash
+``` shell
 rhc app create <app-name> https://raw.githubusercontent.com/Grief/openshift-cartridge-python-3.5/master/metadata/manifest.yml diy-0.1
 ```
 Substituindo "<app-name>" pelo nome de sua aplicação.
@@ -124,7 +124,7 @@ def index():
 ```
  Após isso basta fazer o commit de suas alterações.
 
- ``` bash
+ ``` shell
  git add .
  git commit -am 'Minhas alterações'
  ```
@@ -135,7 +135,7 @@ Após isso você verá que sua aplicação não está rodando, pois ainda não a
 O projeto diy do openshift nos deixa uma variável de ambiente $OPENSHIFT_DIY_IP com o IP da máquina, dessa forma podemos passar a variável e porta ao gunicorn.
 
 "start"
-```
+``` shell
 #!/bin/bash
 nohup $HOME/python/usr/bin/pip3 install -r $OPENSHIFT_REPO_DIR/requirements.txt
 cd $OPENSHIFT_REPO_DIR
@@ -149,7 +149,7 @@ Na terceira linha vemos o nohup, e depois o gunicorn inicializa nossa aplicaçã
 Isso só funciona pois o cartridge customizado instala o python3.5 dentro da pasta home do servidor do openshift.
 
 "stop"
-```
+``` shell
 #!/bin/bash
 source $OPENSHIFT_CARTRIDGE_SDK_BASH
 
