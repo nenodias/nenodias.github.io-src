@@ -7,6 +7,7 @@ AUTHOR = 'Horácio Dias Baptista Neto'
 SITENAME = 'Nenodias'
 SITESUBTITLE = 'Doing the best code or not so...'
 SITEURL = ''
+SITEPROD = 'http://nenodias.github.io'
 
 PATH = 'content'
 
