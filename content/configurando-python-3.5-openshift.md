@@ -11,7 +11,7 @@ Linkedin: nenodias92
 Facebook: nenodias
 Summary: Tutorial básico de como configurar o python 3.5 com o openshift + flask + gunicorn, utilizando o diy (Do It Yourself), carregando um cartridge customizado ...
 
-Configurando OpenShift com Python 3.5
+Configurando OpenShift com Python 3.5 + Flask + Gunicorn
 
 ### Introdução
 
